@@ -1,0 +1,12 @@
+@switch (config?.data?.fields[0].cols[0].cellType) {
+    @case ('ICON_BUTTON') {
+        <button 
+            mat-mini-fab color="{{config?.data?.fields[0]?.cols[0]?.extra?.color}}"
+            (click)="doAction({action:config?.data?.fields[0]?.cols[0]?.extra?.event, value: element, event: $event})"
+            ><mat-icon>{{config?.data?.fields[0]?.cols[0]?.extra?.icon}}</mat-icon>
+        </button>
+    }
+    @default {
+        <span>{{element[config?.data?.fields[0].cols[0].field[0]]}}</span>
+    }
+}

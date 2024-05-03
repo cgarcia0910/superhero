@@ -7,13 +7,15 @@ import { ADAPTER_SUPERHERO_JSON } from './adapter/domain/ports/i-adapter-superhe
 import { ADAPTER_SUPERHERO_PERSISTANCE } from './adapter/domain/ports/i-adapter-superhero-persistance';
 import { SuperheroPersistanceAdapterService } from './adapter/superhero-persistance-adapter.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FilterHeroComponent } from './pages/filter-hero/filter-hero.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    HttpClientModule
+    HttpClientModule,
+    FilterHeroComponent,
   ],
   providers: [
     {provide: MODEL_SUPERHERO_DISPLAYER, useClass: ModelHeroesDisplayerService},
