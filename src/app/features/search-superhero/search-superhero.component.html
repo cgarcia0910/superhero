@@ -1,0 +1,10 @@
+<mat-form-field class="example-full-width">
+    <mat-label>Search superhero</mat-label>
+    <input matInput placeholder="Search" [formControl]="searchTermFormComponent">
+</mat-form-field>
+<ng-container *ngIf="(data() | async) as syncData">
+    <cgc-custom-mat-table
+    [configTable]="SUPERHERO_CONFIG_TABLE"
+    [data]="syncData"
+    ></cgc-custom-mat-table>
+</ng-container>
