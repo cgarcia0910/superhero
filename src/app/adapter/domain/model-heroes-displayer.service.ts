@@ -19,13 +19,17 @@ export class ModelHeroesDisplayerService implements IModelSuperHeroDisplayer {
         this._adapterSuperheroPersistance.createSuperHero(superhero);
         return of(true);
     }
-    getSuperheroesList(): Observable<Superhero[]> {
-        if (this._superHeroList.length > 0) {
-            return of(this._superHeroList);
-        }
+    getSuperheroesList(searchTerm?: string): Observable<Superhero[]> {
         return this._adapterSuperheroJson.getSuperheroJSONList().pipe(
             map((superheroList: Superhero[]) => {
-                this._superHeroList = this._adapterSuperheroPersistance.getSuperHero(superheroList);
+                this._superHeroList = this._adapterSuperheroPersistance.getSuperHero(superheroList)
+                    .filter(superHero => {
+                        if(searchTerm) {
+                            const {nameLabel = ''} = superHero || {};
+                            return (nameLabel.toUpperCase()).includes(searchTerm.toUpperCase());
+                        }
+                        return true;
+                    });
                 return this._superHeroList;
             })
         );

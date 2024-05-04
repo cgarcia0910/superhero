@@ -4,7 +4,7 @@ import { InjectionToken } from "@angular/core";
 
 export interface IModelSuperHeroDisplayer {
     addSuperhero(superhero: Superhero):Observable<boolean>;
-    getSuperheroesList():Observable<Superhero[]>;
+    getSuperheroesList(searchTerm?:string):Observable<Superhero[]>;
     updateSuperhero(currentSuperhero: Superhero, newSuperHero: Superhero):Observable<boolean>;
     removeSuperhero(superhero:Superhero):Observable<boolean>;
 };
