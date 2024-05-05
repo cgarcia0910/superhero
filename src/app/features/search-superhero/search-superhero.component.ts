@@ -35,4 +35,7 @@ export class SearchSuperheroComponent implements OnInit{
         }
       })
   }
+  doAction(event: unknown) {
+    console.log(event)
+  }
 }

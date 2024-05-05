@@ -6,5 +6,6 @@
     <cgc-custom-mat-table
     [configTable]="SUPERHERO_CONFIG_TABLE"
     [data]="syncData"
+    (Emitter)="doAction($event)"
     ></cgc-custom-mat-table>
 </ng-container>

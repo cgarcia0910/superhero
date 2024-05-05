@@ -8,6 +8,8 @@ import { ADAPTER_SUPERHERO_PERSISTANCE } from './adapter/domain/ports/i-adapter-
 import { SuperheroPersistanceAdapterService } from './adapter/superhero-persistance-adapter.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FilterHeroComponent } from './pages/filter-hero/filter-hero.component';
+import { AddSuperheroComponent } from './pages/add-superhero/add-superhero.component';
+import { EditSuperheroComponent } from './pages/edit-superhero/edit-superhero.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,8 @@ import { FilterHeroComponent } from './pages/filter-hero/filter-hero.component';
     RouterOutlet,
     HttpClientModule,
     FilterHeroComponent,
+    AddSuperheroComponent,
+    EditSuperheroComponent,
   ],
   providers: [
     {provide: MODEL_SUPERHERO_DISPLAYER, useClass: ModelHeroesDisplayerService},
