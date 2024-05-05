@@ -34,6 +34,9 @@ export class ModelHeroesDisplayerService implements IModelSuperHeroDisplayer {
             })
         );
     }
+    getSuperhero(superheroId: string): Observable<Superhero | undefined> {
+        return of(this._superHeroList.find(superhero => superhero.id === superheroId))
+    }
     updateSuperhero(currentSuperhero: Superhero, newSuperHero: Superhero): Observable<boolean> {
         const modifiedSuperheroIndex = this._superHeroList.findIndex(sh => JSON.stringify(sh) === JSON.stringify(currentSuperhero));
         if (modifiedSuperheroIndex !== -1) {
