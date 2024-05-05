@@ -106,23 +106,6 @@ export const SUPERHERO_CONFIG_TABLE = [
   },
   {
       cellConfig: {cellType: 'th', tdClass: '', thClass: ''},
-      header: {label: [['']], id: 'view', showChart: false},
-      data: {
-          fields: [
-              {
-              cols: [
-                  {
-                      cellType: 'ICON_BUTTON',
-                      extra: {event: 'view-superhero', icon: 'visibility icon', color:'primary'},
-                      field: ['']
-                  }
-              ]
-              }
-          ]
-      }
-  },
-  {
-      cellConfig: {cellType: 'th', tdClass: '', thClass: ''},
       header: {label: [['']], id: 'edit', showChart: false},
       data: {
           fields: [

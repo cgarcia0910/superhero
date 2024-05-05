@@ -4,11 +4,13 @@ import { SUPERHERO_CONFIG_TABLE } from './filter-hero.constants';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { CgcCustomMatTableComponent } from '../../shared/components';
 import { SearchSuperheroComponent } from '../../features/search-superhero/search-superhero.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @Component({
   selector: 'app-filter-hero',
   standalone: true,
-  imports: [SearchSuperheroComponent],
+  imports: [SearchSuperheroComponent, MatToolbarModule],
   templateUrl: './filter-hero.component.html',
   styleUrl: './filter-hero.component.scss'
 })
