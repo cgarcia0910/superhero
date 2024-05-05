@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, computed, inject, signal } from '@angular/core';
 import { MODEL_SUPERHERO_DISPLAYER } from '../../adapter/domain/ports/i-model-displayer';
 import { SUPERHERO_CONFIG_TABLE } from '../../pages/filter-hero/filter-hero.constants';
 import { CgcCustomMatTableComponent } from '../../shared/components';
@@ -7,6 +7,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { debounceTime, filter } from 'rxjs';
+import { Superhero } from '../../adapter/domain/models/superhero';
 
 @Component({
   selector: 'app-search-superhero',
@@ -17,7 +18,11 @@ import { debounceTime, filter } from 'rxjs';
 })
 export class SearchSuperheroComponent implements OnInit{
   _modelSuperHeroDisplayer = inject(MODEL_SUPERHERO_DISPLAYER)
+
   SUPERHERO_CONFIG_TABLE = SUPERHERO_CONFIG_TABLE;
+
+  @Output() Emitter = new EventEmitter<{action: string, value: unknown}>();
+  
   searchTermFormComponent = new FormControl('');
   searchTerm = signal('');
   data = computed(() => {
@@ -35,7 +40,7 @@ export class SearchSuperheroComponent implements OnInit{
         }
       })
   }
-  doAction(event: unknown) {
-    console.log(event)
+  doAction(event: {action: string, value: unknown}) {
+    this.Emitter.emit(event);
   }
 }

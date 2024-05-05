@@ -1,4 +1,5 @@
 export interface Superhero {
+    id: string;
     nameLabel: string
     genderLabel: string
     citizenshipLabel: string
