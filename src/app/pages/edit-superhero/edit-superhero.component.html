@@ -5,3 +5,9 @@
     class="superhero-form"
     [superhero]="superhero()"
     (Emitter)="doAction($event)"/>
+
+@if(loading()) {
+    <div class="spinner">
+        <mat-spinner/>
+    </div>
+}

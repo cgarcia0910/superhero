@@ -2,3 +2,8 @@
     <span>Add a new superhero</span>
 </mat-toolbar>
 <app-add-edit-superhero class="superhero-form" (Emitter)="doAction($event)"></app-add-edit-superhero>
+@if(loading()) {
+    <div class="spinner">
+        <mat-spinner/>
+    </div>
+}
