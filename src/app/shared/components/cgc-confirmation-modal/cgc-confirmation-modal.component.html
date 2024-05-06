@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>
+    {{data.message}}
+</mat-dialog-content>
+<mat-dialog-actions>
+    @for (item of data.buttons; track trackButton) {
+        <button mat-button [mat-dialog-close]="item?.value">{{item?.label}}</button>
+    }
+  </mat-dialog-actions>
