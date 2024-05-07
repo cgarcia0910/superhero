@@ -1,5 +1,5 @@
 import { Component, DestroyRef, EventEmitter, OnInit, Output, inject, signal } from '@angular/core';
-import { MODEL_SUPERHERO_DISPLAYER } from '../../adapter/domain/ports/i-model-displayer';
+import { MODEL_SUPERHERO_DISPLAYER } from '../../domain/ports/i-model-displayer';
 import { SUPERHERO_CONFIG_TABLE } from '../../pages/filter-hero/filter-hero.constants';
 import { CgcCustomMatTableComponent } from '../../shared/components';
 import { AsyncPipe, NgIf } from '@angular/common';
@@ -7,7 +7,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { debounceTime, firstValueFrom } from 'rxjs';
-import { Superhero } from '../../adapter/domain/models/superhero';
+import { Superhero } from '../../domain/models/superhero';
 import { MatDialog} from '@angular/material/dialog';
 import { CgcConfirmationModalComponent } from '../../shared/components/cgc-confirmation-modal/cgc-confirmation-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

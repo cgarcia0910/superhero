@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Superhero } from "./domain/models/superhero";
-import { IAdapterSuperheroPersistance } from "./domain/ports/i-adapter-superhero-persistance";
+import { Superhero } from "../domain/models/superhero";
+import { IAdapterSuperheroPersistance } from "../domain/ports/i-adapter-superhero-persistance";
 
 @Injectable()
 export class SuperheroPersistanceAdapterService implements IAdapterSuperheroPersistance {

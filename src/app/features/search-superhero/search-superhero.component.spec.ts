@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
-import { IModelSuperHeroDisplayer, MODEL_SUPERHERO_DISPLAYER } from '../../adapter/domain/ports/i-model-displayer';
+import { IModelSuperHeroDisplayer, MODEL_SUPERHERO_DISPLAYER } from '../../domain/ports/i-model-displayer';
 import { SearchSuperheroComponent } from './search-superhero.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AsyncPipe, NgIf } from '@angular/common';
@@ -10,7 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, of } from 'rxjs';
-import { Superhero } from '../../adapter/domain/models/superhero';
+import { Superhero } from '../../domain/models/superhero';
 import { MatDialog} from '@angular/material/dialog';
 
 

@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, Injector } from "@angular/core";
 import { Observable, map } from "rxjs";
-import { IAdapterSuperheroJSON } from "./domain/ports/i-adapter-superhero-json";
-import { Superhero } from "./domain/models/superhero";
+import { IAdapterSuperheroJSON } from "../domain/ports/i-adapter-superhero-json";
+import { Superhero } from "../domain/models/superhero";
 
 @Injectable()
 export class SuperheroJsonAdapterService implements IAdapterSuperheroJSON {

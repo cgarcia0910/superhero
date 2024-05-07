@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddEditSuperheroComponent } from './add-edit-superhero.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-fdescribe('AddEditSuperheroComponent', () => {
+describe('AddEditSuperheroComponent', () => {
   let component: AddEditSuperheroComponent;
   let fixture: ComponentFixture<AddEditSuperheroComponent>;
 

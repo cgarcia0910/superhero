@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MODEL_SUPERHERO_DISPLAYER } from './adapter/domain/ports/i-model-displayer';
-import { ModelHeroesDisplayerService } from './adapter/domain/model-heroes-displayer.service';
+import { MODEL_SUPERHERO_DISPLAYER } from './domain/ports/i-model-displayer';
+import { ModelHeroesDisplayerService } from './domain/model-heroes-displayer.service';
 import { SuperheroJsonAdapterService } from './adapter/superhero-json-adapter.service';
-import { ADAPTER_SUPERHERO_JSON } from './adapter/domain/ports/i-adapter-superhero-json';
-import { ADAPTER_SUPERHERO_PERSISTANCE } from './adapter/domain/ports/i-adapter-superhero-persistance';
+import { ADAPTER_SUPERHERO_JSON } from './domain/ports/i-adapter-superhero-json';
+import { ADAPTER_SUPERHERO_PERSISTANCE } from './domain/ports/i-adapter-superhero-persistance';
 import { SuperheroPersistanceAdapterService } from './adapter/superhero-persistance-adapter.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FilterHeroComponent } from './pages/filter-hero/filter-hero.component';
