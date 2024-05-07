@@ -1,0 +1,1 @@
+export * from './cgc-custom-mat-table/cgc-custom-mat-table.component';

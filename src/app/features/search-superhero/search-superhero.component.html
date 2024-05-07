@@ -1,0 +1,21 @@
+<div class="search-area-container">
+    <div class="search-area">
+        <button mat-button color="primary" (click)="doAction({action: 'create-superhero', value: undefined})">Create superhero</button>
+        <mat-form-field>
+            <mat-label>Search superhero</mat-label>
+            <input matInput placeholder="Search" [formControl]="searchTermFormComponent">
+        </mat-form-field>
+    </div>
+</div>
+<ng-container *ngIf="data()">
+    <cgc-custom-mat-table
+    [configTable]="SUPERHERO_CONFIG_TABLE"
+    [data]="data()"
+    (Emitter)="doAction($event)"
+    ></cgc-custom-mat-table>
+</ng-container>
+@if(loading()) {
+    <div class="spinner">
+        <mat-spinner/>
+    </div>
+}

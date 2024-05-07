@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.superhero-form {
+  padding-top: 5em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.spinner {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
+}
+
+.search-area-container {
+  display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(900px, 1fr));
+}
+
+.search-area {
+  display: grid;
+  grid-template-columns: 2fr 6fr;
+  gap: 1em;
+  grid-column: 2 / 3;
+  button {
+    align-self: center;
+  }
+}
