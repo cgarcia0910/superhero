@@ -1,5 +1,5 @@
 import { Inject, Injectable, inject } from "@angular/core";
-import { BehaviorSubject, map, Observable, of, tap } from "rxjs";
+import { BehaviorSubject, delay, map, Observable, of, tap } from "rxjs";
 import { Superhero } from "./models/superhero";
 import { ADAPTER_SUPERHERO_JSON, IAdapterSuperheroJSON } from "./ports/i-adapter-superhero-json";
 import { ADAPTER_SUPERHERO_PERSISTANCE, IAdapterSuperheroPersistance } from "./ports/i-adapter-superhero-persistance";
@@ -31,24 +31,25 @@ export class ModelHeroesDisplayerService implements IModelSuperHeroDisplayer {
                         return true;
                     });
                 return this._superHeroList;
-            })
+            }),
+            delay(500),
         );
     }
     getSuperhero(superheroId: string): Observable<Superhero | undefined> {
-        return of(this._superHeroList.find(superhero => superhero.id === superheroId))
+        return of(this._superHeroList.find(superhero => superhero.id === superheroId)).pipe(delay(500));
     }
     updateSuperhero(currentSuperhero: Superhero, newSuperHero: Superhero): Observable<boolean> {
         const modifiedSuperheroIndex = this._superHeroList.findIndex(sh => JSON.stringify(sh) === JSON.stringify(currentSuperhero));
         if (modifiedSuperheroIndex !== -1) {
-            this._superHeroList[modifiedSuperheroIndex] = newSuperHero;
-            this._adapterSuperheroPersistance.updateSuperHero(currentSuperhero, newSuperHero);
-            return of(true);
+            this._superHeroList[modifiedSuperheroIndex] = {...newSuperHero, id: currentSuperhero.id};
+            this._adapterSuperheroPersistance.updateSuperHero(currentSuperhero, {...newSuperHero, id: currentSuperhero.id});
+            return of(true).pipe(delay(500));
         }
         return of(false);
     }
     removeSuperhero(superhero: Superhero): Observable<boolean> {
         this._superHeroList = this._superHeroList.filter(sh => JSON.stringify(sh) !== JSON.stringify(superhero));
         this._adapterSuperheroPersistance.deleteSuperHero(superhero);
-        return of(true);
+        return of(true).pipe(delay(500));
     }
 }
