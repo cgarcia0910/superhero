@@ -1,13 +1,10 @@
-import { Component, DestroyRef, OnInit, effect, inject, viewChild } from '@angular/core';
-import { MODEL_SUPERHERO_DISPLAYER } from '../../adapter/domain/ports/i-model-displayer'
+import { Component, inject } from '@angular/core';
+import { MODEL_SUPERHERO_DISPLAYER } from '../../domain/ports/i-model-displayer'
 import { SUPERHERO_CONFIG_TABLE } from './filter-hero.constants';
 import { SearchSuperheroComponent } from '../../features/search-superhero/search-superhero.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { Superhero } from '../../adapter/domain/models/superhero';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { Superhero } from '../../domain/models/superhero';
 import { Router } from '@angular/router';
-import { CgcConfirmationModalComponent } from '../../shared/components/cgc-confirmation-modal/cgc-confirmation-modal.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-filter-hero',
@@ -27,6 +24,9 @@ export class FilterHeroComponent {
       case 'edit-superhero':
         const {id = undefined} = value as Superhero || {};
         this._router.navigate([`edit-superhero/${id}`]);
+      break;
+      case 'create-superhero':
+        this._router.navigate(['add-superhero']);
       break;
     }
   }

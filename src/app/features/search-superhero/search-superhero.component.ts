@@ -1,13 +1,13 @@
-import { Component, DestroyRef, EventEmitter, OnInit, Output, Signal, computed, effect, inject, signal } from '@angular/core';
-import { MODEL_SUPERHERO_DISPLAYER } from '../../adapter/domain/ports/i-model-displayer';
+import { Component, DestroyRef, EventEmitter, OnInit, Output, inject, signal } from '@angular/core';
+import { MODEL_SUPERHERO_DISPLAYER } from '../../domain/ports/i-model-displayer';
 import { SUPERHERO_CONFIG_TABLE } from '../../pages/filter-hero/filter-hero.constants';
 import { CgcCustomMatTableComponent } from '../../shared/components';
-import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { Observable, debounceTime, filter, firstValueFrom, of } from 'rxjs';
-import { Superhero } from '../../adapter/domain/models/superhero';
+import { debounceTime, firstValueFrom } from 'rxjs';
+import { Superhero } from '../../domain/models/superhero';
 import { MatDialog} from '@angular/material/dialog';
 import { CgcConfirmationModalComponent } from '../../shared/components/cgc-confirmation-modal/cgc-confirmation-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -37,28 +37,26 @@ export class SearchSuperheroComponent implements OnInit{
   data = signal<Superhero[]>([]);
   loading = signal<boolean>(true);
 
-  constructor() {
-    effect(() => {
-      this.loadHeroList();
-    })
-  }
   ngOnInit(): void {
     this.searchTermFormComponent.valueChanges
-      .pipe(
-        filter(e => !!e),
-        debounceTime(500)
+    .pipe(
+      debounceTime(500)
       )
       .subscribe(e => {
-        if(e !== null) {
-          this.searchTerm.set(e);
-        }
+        // this.loading.set(true);
+        this.searchTerm.set(e !== null? e : '');
+        this.loadHeroList();
       });
+    this.loadHeroList();
   }
   doAction(event: {action: string, value: unknown}) {
     const { action = undefined, value = undefined } = event || {};
     console.log(event)
     switch(action) {
       case 'delete-superhero':
+          console.log('delete')
+          console.log(this._dialog)
+          debugger;
           this._dialog.open(CgcConfirmationModalComponent, {
             data: {
               title: "Delete superhero",
@@ -68,10 +66,12 @@ export class SearchSuperheroComponent implements OnInit{
                 {label: 'Delete', value: 'delete'}
               ]
             }
-          }).afterClosed().pipe(takeUntilDestroyed(this._destroyRef)).subscribe(modalResponse => {
+          }).afterClosed()
+          // .pipe(takeUntilDestroyed(this._destroyRef))
+          .subscribe(modalResponse => {
             switch(modalResponse) {
               case 'delete':
-                this.loading.set(true);
+                // this.loading.set(true);
                 firstValueFrom(this._modelSuperHeroDisplayer.removeSuperhero(value as Superhero)).then(e => this.loadHeroList());
               break;
             }
@@ -83,6 +83,7 @@ export class SearchSuperheroComponent implements OnInit{
   }
 
   private loadHeroList() {
+    this.loading.set(true);
     firstValueFrom(this._modelSuperHeroDisplayer.getSuperheroesList(this.searchTerm())).then(heroList => {
       this.data.set(heroList);
       this.loading.set(false);

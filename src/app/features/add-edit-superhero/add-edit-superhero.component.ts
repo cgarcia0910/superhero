@@ -6,7 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import { Superhero } from '../../adapter/domain/models/superhero';
+import { Superhero } from '../../domain/models/superhero';
 
 @Component({
   selector: 'app-add-edit-superhero',
@@ -40,7 +40,6 @@ export class AddEditSuperheroComponent {
     })
   }
   onSubmit(event: Event) {
-    console.log(this.superheroForm)
     if(this.superheroForm.valid) {
       this.Emitter.emit({action: this.editionMode() ? 'update-superhero' : 'save-superhero', value: this.superheroForm.value as Superhero})
     }

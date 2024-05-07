@@ -1,8 +1,8 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { AddEditSuperheroComponent } from '../../features/add-edit-superhero/add-edit-superhero.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { MODEL_SUPERHERO_DISPLAYER } from '../../adapter/domain/ports/i-model-displayer';
-import { Superhero } from '../../adapter/domain/models/superhero';
+import { MODEL_SUPERHERO_DISPLAYER } from '../../domain/ports/i-model-displayer';
+import { Superhero } from '../../domain/models/superhero';
 import { firstValueFrom } from 'rxjs';
 import { CgcConfirmationModalComponent } from '../../shared/components/cgc-confirmation-modal/cgc-confirmation-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
