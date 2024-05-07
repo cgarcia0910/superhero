@@ -40,7 +40,6 @@ export class AddEditSuperheroComponent {
     })
   }
   onSubmit(event: Event) {
-    console.log(this.superheroForm)
     if(this.superheroForm.valid) {
       this.Emitter.emit({action: this.editionMode() ? 'update-superhero' : 'save-superhero', value: this.superheroForm.value as Superhero})
     }
